@@ -6,7 +6,7 @@
 })
 export class ThousandShortPipe implements PipeTransform {
     transform(input: any, args?: any): any {
-      var exp,
+      let exp,
         suffixes = ['k', 'M', 'G', 'T', 'P', 'E'];
 
       if (Number.isNaN(input)) {

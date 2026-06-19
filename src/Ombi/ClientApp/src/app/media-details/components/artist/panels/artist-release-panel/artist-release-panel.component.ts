@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from "@angular/core";
-import { ViewEncapsulation } from "@angular/core";
+import { ViewEncapsulation, OnInit } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { IReleaseGroups } from "../../../../../interfaces/IMusicSearchResultV2";
 import { SearchV2Service } from "../../../../../services/searchV2.service";
@@ -20,7 +20,7 @@ import { MatTooltipModule } from "@angular/material/tooltip";
         MatTooltipModule,
     ]
 })
-export class ArtistReleasePanel implements OnChanges {
+export class ArtistReleasePanel implements OnChanges, OnInit {
     @Input() public releases: IReleaseGroups[];
     @Output() public onAlbumSelect = new EventEmitter<IReleaseGroups>();
     @Output() public albumLoad = new EventEmitter<IReleaseGroups[]>();

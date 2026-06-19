@@ -72,10 +72,10 @@
 					<div class="col-3">
 						{{ ep.title }}
 					</div>
-					<div class="col-2" *ngIf="ep.airDateDisplay != 'Unknown'">
+					<div class="col-2" *ngIf="ep.airDateDisplay !== 'Unknown'">
 						{{ ep.airDate | ombiDate: 'P' }}
 					</div>
-					<div class="col-2" *ngIf="ep.airDateDisplay == 'Unknown'">
+					<div class="col-2" *ngIf="ep.airDateDisplay === 'Unknown'">
 						{{ ep.airDateDisplay }}
 					</div>
 					<div class="col-3">

@@ -106,8 +106,8 @@ export class AppComponent implements OnInit {
             }
 
             if (this.customizationSettings && this.customizationSettings.customCss) {
-                var dom = this.document.getElementsByTagName('head')[0];
-                var css = document.createElement("style");
+                const dom = this.document.getElementsByTagName('head')[0];
+                const css = document.createElement("style");
                 css.innerHTML = this.customizationSettings.customCss;
                 dom.appendChild(css);
             }

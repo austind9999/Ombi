@@ -149,7 +149,7 @@ export class TvDetailsComponent implements OnInit {
     }
 
     public openDialog() {
-        let trailerLink = this.tv.trailer;
+        const trailerLink = this.tv.trailer;
 
         this.dialog.open(YoutubeTrailerComponent, {
             width: '560px',

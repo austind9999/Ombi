@@ -151,7 +151,7 @@ export class UserPreferenceComponent implements OnInit {
             return;
         }
 
-        var values = this.passwordForm.value;
+        const values = this.passwordForm.value;
 
         this.identityService.updateLocalUser({
             password: values.password,
@@ -179,8 +179,8 @@ export class UserPreferenceComponent implements OnInit {
 
     private welcomeText: string;
     private setWelcomeText() {
-    var d = new Date();
-    var hour = d.getHours();
+    const d = new Date();
+    const hour = d.getHours();
 
     if (hour >= 0 && hour < 12) {
       this.welcomeText = 'NavigationBar.MorningWelcome';

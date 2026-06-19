@@ -22,7 +22,7 @@ export class MessageService {
     }
     public sendRequestEngineResultError(result: IRequestEngineResult, action: string = "Ok") {
         const textKey = 'Requests.ErrorCodes.' + result.errorCode;
-        var text = this.translate.instant(textKey);
+        let text = this.translate.instant(textKey);
         if (text === textKey) { // Error code on backend may not exist in frontend
             if (result.errorMessage || result.message) {
                 text = result.errorMessage ? result.errorMessage : result.message;

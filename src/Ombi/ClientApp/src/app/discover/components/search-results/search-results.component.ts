@@ -90,7 +90,7 @@ export class DiscoverSearchResultsComponent implements OnInit {
     }
 
     public async init() {
-        var filter = this.store.get("searchFilter");
+        const filter = this.store.get("searchFilter");
         if (filter) {
             this.filter = Object.assign(new SearchFilter(), JSON.parse(filter));
         } else {
@@ -166,7 +166,7 @@ export class DiscoverSearchResultsComponent implements OnInit {
         const type = this.advancedDataService.getType();
         advancedData.forEach(m => {
 
-            let mediaType = type;
+            const mediaType = type;
 
             let poster = `https://image.tmdb.org/t/p/w300/${m.posterPath}`;
             if (!m.posterPath) {

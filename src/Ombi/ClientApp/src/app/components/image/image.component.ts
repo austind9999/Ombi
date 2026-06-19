@@ -4,7 +4,7 @@ import {
   Component,
   Inject,
   Input,
-  ViewEncapsulation,
+  ViewEncapsulation, OnInit,
 } from "@angular/core";
 import { RequestType } from "../../interfaces";
 import { APP_BASE_HREF } from "@angular/common";
@@ -17,7 +17,7 @@ import { APP_BASE_HREF } from "@angular/common";
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: "./image.component.html",
 })
-export class ImageComponent {
+export class ImageComponent implements OnInit {
   private _src: string;
   
   @Input() 

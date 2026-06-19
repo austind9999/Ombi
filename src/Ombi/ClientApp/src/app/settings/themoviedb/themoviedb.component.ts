@@ -105,7 +105,7 @@ export class TheMovieDbComponent implements OnInit {
 
             this.excludedKeywords.forEach(key => {
                 this.tmdbService.getKeyword(key.id).subscribe(keyResult => {
-                    var keyToUpdate = this.excludedKeywords.filter((val) => {
+                    const keyToUpdate = this.excludedKeywords.filter((val) => {
                         return val.id == key.id;
                     })[0];
                     keyToUpdate.name = keyResult.name;
@@ -162,7 +162,7 @@ export class TheMovieDbComponent implements OnInit {
     }
 
     public remove(tag: IKeywordTag, tag_type: string): void {
-        var exclusion_list;
+        let exclusion_list;
 
         switch (tag_type) {
             case "keyword":
@@ -187,11 +187,11 @@ export class TheMovieDbComponent implements OnInit {
 
     public save() {
 
-        var selectedMovieGenres: number[] = this.tagForm.controls.excludedMovieGenres.value ?? [];
-        var selectedTvGenres: number[] = this.tagForm.controls.excludedTvGenres.value ?? [];
+        let selectedMovieGenres: number[] = this.tagForm.controls.excludedMovieGenres.value ?? [];
+        let selectedTvGenres: number[] = this.tagForm.controls.excludedTvGenres.value ?? [];
 
-        var movieIds: number[] = this.excludedMovieGenres.map(k => k.id);
-        var tvIds: number[] = this.excludedTvGenres.map(k => k.id)
+        const movieIds: number[] = this.excludedMovieGenres.map(k => k.id);
+        const tvIds: number[] = this.excludedTvGenres.map(k => k.id)
 
         // Concat and dedup already excluded genres + newly selected ones
         selectedMovieGenres = movieIds.concat(selectedMovieGenres.filter(item => movieIds.indexOf(item) < 0));

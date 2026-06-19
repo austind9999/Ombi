@@ -102,7 +102,7 @@ export class PlexComponent implements OnInit, OnDestroy {
     public selectServer(selectedDevice: IPlexDeviceResponse) {
         const server = <IPlexServer> { name: "New" + this.settings.servers.length + "*", id: Math.floor(Math.random() * (99999 - 0 + 1) + 1) };
 
-        var splitServers = selectedDevice.localAddresses.split(",");
+        const splitServers = selectedDevice.localAddresses.split(",");
         if (splitServers.length > 1) {
             server.ip = splitServers[splitServers.length - 1];
         } else {
@@ -175,7 +175,7 @@ export class PlexComponent implements OnInit, OnDestroy {
                 this.removeServer(server);
             }
             if (x.server) {
-                var idx = this.settings.servers.findIndex(server => server.id === x.server.id);
+                const idx = this.settings.servers.findIndex(server => server.id === x.server.id);
                 if (idx >= 0) {
                     this.settings.servers[idx] = x.server;
                 } else {

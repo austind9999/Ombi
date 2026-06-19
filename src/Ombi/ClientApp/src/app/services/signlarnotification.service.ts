@@ -17,7 +17,7 @@ export class SignalRNotificationService {
     public initialize(): void {
 
         this.stopConnection();
-        let url = "hubs/notification";
+        const url = "hubs/notification";
         this.hubConnection = new signalR.HubConnectionBuilder().withUrl(url, {
             accessTokenFactory: () => {
                 return this.authService.getToken();

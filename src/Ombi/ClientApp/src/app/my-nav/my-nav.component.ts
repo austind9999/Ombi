@@ -1,6 +1,6 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges, OnChanges } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule, MatDialog } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
@@ -48,7 +48,7 @@ export enum SearchFilterType {
         NavSearchComponent
     ]
 })
-export class MyNavComponent implements OnInit {
+export class MyNavComponent implements OnInit, OnChanges {
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe([Breakpoints.Small, Breakpoints.Handset, Breakpoints.XSmall])
     .pipe(
@@ -108,7 +108,7 @@ export class MyNavComponent implements OnInit {
     if (!this.theme) {
       this.store.save("theme", "dark");
     }
-    var filter = this.store.get("searchFilter");
+    const filter = this.store.get("searchFilter");
     if (filter) {
       this.searchFilter = Object.assign(new SearchFilter(), JSON.parse(filter));
       this.filterService.changeFilter(this.searchFilter);

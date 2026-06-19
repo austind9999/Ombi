@@ -1,4 +1,4 @@
-import { Component, ViewChild, Inject, input, output, signal, computed, inject, ChangeDetectionStrategy } from "@angular/core";
+import { Component, ViewChild, Inject, input, output, signal, computed, inject, ChangeDetectionStrategy, OnInit } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { MatButtonToggleModule, MatButtonToggleChange } from '@angular/material/button-toggle';
 import { TranslateModule } from "@ngx-translate/core";
@@ -36,7 +36,7 @@ export enum DiscoverType {
         DiscoverCardComponent
     ]
 })
-export class CarouselListComponent {
+export class CarouselListComponent implements OnInit {
     // Inputs using new input() function
     public discoverType = input.required<DiscoverType>();
     public id = input.required<string>();
@@ -202,11 +202,11 @@ export class CarouselListComponent {
             return;
         }
 
-        var end = this.carousel.page >= (this.carousel.totalDots() - 2) || this.carousel.totalDots() === 1;
+        const end = this.carousel.page >= (this.carousel.totalDots() - 2) || this.carousel.totalDots() === 1;
         if (end) {
-            var offset = this.currentlyLoaded;
-            var moviePromise: Promise<void>;
-            var tvPromise: Promise<void>;
+            const offset = this.currentlyLoaded;
+            let moviePromise: Promise<void>;
+            let tvPromise: Promise<void>;
             switch (+this.discoverOptions()) {
                 case DiscoverOption.Combined:
                     moviePromise = this.loadMovies(offset);
@@ -227,9 +227,9 @@ export class CarouselListComponent {
     }
 
     private async loadData(clearExisting: boolean = true) {
-        var offset = this.currentlyLoaded;
-        var moviePromise: Promise<void>;
-        var tvPromise: Promise<void>;
+        const offset = this.currentlyLoaded;
+        let moviePromise: Promise<void>;
+        let tvPromise: Promise<void>;
         switch (+this.discoverOptions()) {
             case DiscoverOption.Combined:
                 moviePromise = this.loadMovies(offset);
@@ -260,7 +260,7 @@ export class CarouselListComponent {
     }
 
     private async loadMovies(offset?: number) {
-        var loadOffset = offset ?? this.currentlyLoaded;
+        const loadOffset = offset ?? this.currentlyLoaded;
         switch (this.discoverType()) {
             case DiscoverType.Popular:
                 this.movies.set(await this.searchService.popularMoviesByPage(loadOffset, this.amountToLoad));
@@ -282,7 +282,7 @@ export class CarouselListComponent {
     }
 
     private async loadTv(offset?: number) {
-        var loadOffset = offset ?? this.currentlyLoaded;
+        const loadOffset = offset ?? this.currentlyLoaded;
         switch (this.discoverType()) {
             case DiscoverType.Popular:
                 this.tvShows.set(await this.searchService.popularTvByPage(loadOffset, this.amountToLoad));
